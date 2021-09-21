@@ -1,16 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Hello_Project
 {
@@ -30,7 +24,18 @@ namespace Hello_Project
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Hello_Project", Version = "v1" });
+                c.SwaggerDoc("v1", 
+                    new OpenApiInfo { 
+                        Title = "Happy Birthday API", 
+                        Version = "v1",
+                        Description = "An Api to return Happy Birthday to person Accessing the Endpoint",
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Ganesh Tiwari",
+                            Email = "ganesht049@gmail.com",
+                            Url = new Uri("https://twitter.com/igat786"),
+                        },
+                    });
             });
         }
 
@@ -54,6 +59,10 @@ namespace Hello_Project
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Happy Birthday Project v1"); });
         }
     }
 }
