@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Hello_Project.Controllers
 {
+    /// <summary>
+    /// Takes name as a post body data and returns Hello Birthday, ${name}! as response
+    /// </summary>
     [ApiController]
     [Route("hello")]
     public class HelloController: ControllerBase

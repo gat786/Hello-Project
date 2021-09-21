@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Hello_Project.Models
 {
+    /// <summary>
+    /// Request body for the Hello Api
+    /// </summary>
     public class HelloRequest
     {
         [Required]
